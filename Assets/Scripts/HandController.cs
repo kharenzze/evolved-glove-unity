@@ -13,6 +13,6 @@ public class HandController : MonoBehaviour {
 
     private void setNodeRotation(Transform node, float rotation) {
         Vector3 euler = node.rotation.eulerAngles;
-        node.rotation = new Vector3(euler.x, 90 * rotation, euler.z);
+        node.rotation = Quaternion.Euler(new Vector3(euler.x, 90 * rotation, euler.z));
     }
 }
