@@ -11,8 +11,14 @@ public class HandController : MonoBehaviour {
     public Transform pinky = null;
     public Transform ring = null;
 
+    private Vector3 _palmReference;
+
     private void setNodeRotation(Transform node, float rotation) {
         Vector3 euler = node.rotation.eulerAngles;
         node.rotation = Quaternion.Euler(new Vector3(euler.x, 90 * rotation, euler.z));
+    }
+
+    public void setPalmReference(Vector3 palmReference) {
+        _palmReference = palmReference;
     }
 }
