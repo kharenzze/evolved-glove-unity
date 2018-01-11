@@ -15,7 +15,8 @@ public class HandController : MonoBehaviour {
     public HandState _hs = new HandState();
 
     private void setNodeRotation(Transform node, float rotationRate) {
-        node.localEulerAngles = new Vector3(0, -90 * rotationRate, 0);
+        var rotation = Quaternion.Euler(0, -90 * rotationRate, 0); // +90 degrees Y rotation
+        node.localRotation = Quaternion.Slerp(node.localRotation, rotation, Time.time  * 0.1f);
     }
 
     private void Update() {
@@ -26,7 +27,7 @@ public class HandController : MonoBehaviour {
         _palmReference = palmReference;
     }
 
-    public void loadHandState(HandState hs) {
+    private void loadHandState(HandState hs) {
         setNodeRotation(pinky, hs.pinky[0]);
         setNodeRotation(pinky.GetChild(0), hs.pinky[1]);
         setNodeRotation(pinky.GetChild(0).GetChild(0), hs.pinky[1]);
