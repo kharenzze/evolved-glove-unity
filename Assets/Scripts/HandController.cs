@@ -27,24 +27,23 @@ public class HandController : MonoBehaviour {
     }
 
     public void loadHandState(HandState hs) {
+        setNodeRotation(pinky, hs.pinky[0]);
+        setNodeRotation(pinky.GetChild(0), hs.pinky[1]);
+        setNodeRotation(pinky.GetChild(0).GetChild(0), hs.pinky[1]);
+        
+        setNodeRotation(ring, hs.ring[0]);
+        setNodeRotation(ring.GetChild(0), hs.ring[1]);
+        setNodeRotation(ring.GetChild(0).GetChild(0), hs.ring[1]);
+        
+        setNodeRotation(middle, hs.middle[0]);
+        setNodeRotation(middle.GetChild(0), hs.middle[1]);
+        setNodeRotation(middle.GetChild(0).GetChild(0), hs.middle[1]);  
+        
         setNodeRotation(index, hs.index[0]);
         setNodeRotation(index.GetChild(0), hs.index[1]);
         setNodeRotation(index.GetChild(0).GetChild(0), hs.index[1]);
 
-        setNodeRotation(thumb, hs.thumb[0]);
-        setNodeRotation(thumb.GetChild(0), hs.thumb[1]);
+        setNodeRotation(thumb.GetChild(0), hs.thumb[0]);
         setNodeRotation(thumb.GetChild(0).GetChild(0), hs.thumb[1]);
-
-        setNodeRotation(middle, hs.middle[0]);
-        setNodeRotation(middle.GetChild(0), hs.middle[1]);
-        setNodeRotation(middle.GetChild(0).GetChild(0), hs.middle[1]);
-
-        setNodeRotation(ring, hs.ring[0]);
-        setNodeRotation(ring.GetChild(0), hs.ring[1]);
-        setNodeRotation(ring.GetChild(0).GetChild(0), hs.ring[1]);
-
-        setNodeRotation(pinky, hs.pinky[0]);
-        setNodeRotation(pinky.GetChild(0), hs.pinky[1]);
-        setNodeRotation(pinky.GetChild(0).GetChild(0), hs.pinky[1]);
     }
 }
