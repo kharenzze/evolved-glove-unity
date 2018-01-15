@@ -33,7 +33,8 @@ public class HandController : MonoBehaviour {
     }
 
     public void setPalmReference(Vector3 palmReference) {
-        _palmReference = palmReference;
+        _palmReference = new Vector3(-palmReference.z, palmReference.x, -palmReference.y);
+        palm.localRotation = Quaternion.Euler(_palmReference);
     }
 
     private void loadHandState(HandState hs) {
@@ -55,5 +56,7 @@ public class HandController : MonoBehaviour {
 
         setThumbRotation(thumb.GetChild(0), hs.thumb[0]);
         setThumbRotation(thumb.GetChild(0).GetChild(0), hs.thumb[1]);
+
+        setPalmReference(hs.palm);
     }
 }
