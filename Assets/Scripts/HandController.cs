@@ -17,7 +17,8 @@ public class HandController : MonoBehaviour {
     private const float _rate = .5f;
 
     private void setNodeRotation(Transform node, float rotationRate) {
-        var rotation = Quaternion.Euler(0, -90 * rotationRate, 0); // +90 degrees Y rotation
+        float angle = (-100 * rotationRate) + 10;
+        var rotation = Quaternion.Euler(0, angle, 0); // +90 degrees Y rotation
         node.localRotation = Quaternion.Slerp(node.localRotation, rotation,  _rate);
     }
 
