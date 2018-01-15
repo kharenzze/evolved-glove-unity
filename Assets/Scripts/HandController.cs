@@ -12,6 +12,7 @@ public class HandController : MonoBehaviour {
     public Transform ring = null;
 
     private Vector3 _palmReference;
+    private Vector3 _palmOffset = Vector3.zero;
     public HandState _hs = new HandState();
 
     private const float _rate = .5f;
@@ -30,11 +31,14 @@ public class HandController : MonoBehaviour {
 
     private void Update() {
         loadHandState(_hs);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            _palmOffset = -palm.localEulerAngles + _palmOffset;
+        }
     }
 
     public void setPalmReference(Vector3 palmReference) {
         _palmReference = new Vector3(-palmReference.z, palmReference.x, -palmReference.y);
-        palm.localRotation = Quaternion.Euler(_palmReference);
+        palm.localRotation = Quaternion.Euler(_palmReference + _palmOffset);
     }
 
     private void loadHandState(HandState hs) {
